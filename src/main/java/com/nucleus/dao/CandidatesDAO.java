@@ -42,4 +42,30 @@ public class CandidatesDAO {
 	   return candidates;
 	}
 	
+	public boolean saveCandidates(Candidate candi)
+	{
+		Session session = null;
+	    Transaction transaction = null;
+	    try {
+	      session = HibernateUtil.getSessionFactory().openSession();
+	      transaction = session.beginTransaction();
+	      
+	      session.saveOrUpdate(candi);
+	      
+	      transaction.commit();
+	    } catch (Exception e) {
+	    	e.printStackTrace();
+	      if (transaction != null) {
+	        transaction.rollback();
+	        return false;
+	      }
+	      e.printStackTrace();
+	    } finally {
+	      if (session != null) {
+	        session.close();
+	      }
+	    }
+	    return true;
+	 }					
+	
 }

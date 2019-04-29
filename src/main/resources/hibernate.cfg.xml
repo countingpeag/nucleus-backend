@@ -20,7 +20,7 @@
 			root
 		</property>
 		<property name="hibernate.connection.password">
-			core
+			9505
 		</property>
 		
 		<!-- c3p0 configuration -->
@@ -46,6 +46,10 @@
 		<mapping class="com.nucleus.models.Subject" />
 		<mapping class="com.nucleus.models.Teacher" />
 		<mapping class="com.nucleus.models.TeachersAvailability" />
+		<mapping class="com.nucleus.models.Candidate" />
+		<mapping class="com.nucleus.models.Economy" />
+		<mapping class="com.nucleus.models.Health" />
+		<mapping class="com.nucleus.models.Preference" />
 		
 	</session-factory>
 </hibernate-configuration>
