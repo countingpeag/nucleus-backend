@@ -2,6 +2,9 @@ package com.nucleus.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -20,7 +23,7 @@ public class Health {
 	private String healthSmokingFlag;
 	private String healthLaterality;
 	
-	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_healt")
 	public int getIdHealth() {
 		return idHealth;
@@ -29,7 +32,7 @@ public class Health {
 		this.idHealth = idHealth;
 	}
 	
-	@Column(name="healt_insurance_number")
+	@Column(name="health_insurance_number")
 	public String getInsuranceNumber() {
 		return insuranceNumber;
 	}
@@ -37,7 +40,7 @@ public class Health {
 		this.insuranceNumber = insuranceNumber;
 	}
 	
-	@Column(name="healt_candidate_height")
+	@Column(name="health_candidate_height")
 	public double getHealthCandidateHeight() {
 		return healthCandidateHeight;
 	}
@@ -61,7 +64,7 @@ public class Health {
 		this.healthCandidateBloodType = healthCandidateBloodType;
 	}
 	
-	@Column(name="health_illnes_flag")
+	@Column(name="health_illness_flag")
 	public String getHealthIllnessFlag() {
 		return healthIllnessFlag;
 	}
@@ -69,7 +72,7 @@ public class Health {
 		this.healthIllnessFlag = healthIllnessFlag;
 	}
 	
-	@Column(name="health_disablity")
+	@Column(name="health_disability")
 	public String getHealthDisability() {
 		return healthDisability;
 	}
@@ -93,7 +96,7 @@ public class Health {
 		this.healthSmokingFlag = healthSmokingFlag;
 	}
 	
-	@Column(name="health_lateralilty")
+	@Column(name="health_laterality")
 	public String getHealthLaterality() {
 		return healthLaterality;
 	}

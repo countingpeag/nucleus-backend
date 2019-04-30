@@ -51,12 +51,10 @@ public class CandidatesServices {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response addCandidate(Candidate candi)
-	{
+	{	
 		CandidatesDAO candidateDAO = new CandidatesDAO();
 		boolean res = candidateDAO.saveCandidates(candi);
-		System.out.println(candi.getCandidateName());
-		System.out.println(candi.getCandidateCellPhone());
-		System.out.println(candi.getCandidatePersonalPhone());
+
 		if(res == true)
 			return Response.ok().entity("successful").build();
 		else 

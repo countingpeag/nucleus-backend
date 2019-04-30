@@ -8,7 +8,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
@@ -17,9 +16,10 @@ import com.nucleus.models.Candidate;
 
 public class CandidatesDAO {
 	Session session;	
+	Transaction transaction;
 	
 	public List<Candidate> getAllCandidates() {
-		Transaction transaction = null;
+		transaction = null;
 		session = HibernateUtil.getSessionFactory().openSession();
 		List<Candidate> candidates = new ArrayList<Candidate>();
 	      try {
@@ -44,8 +44,8 @@ public class CandidatesDAO {
 	
 	public boolean saveCandidates(Candidate candi)
 	{
-		Session session = null;
-	    Transaction transaction = null;
+		session = null;
+	    transaction = null;
 	    try {
 	      session = HibernateUtil.getSessionFactory().openSession();
 	      transaction = session.beginTransaction();

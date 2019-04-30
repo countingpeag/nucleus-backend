@@ -20,7 +20,7 @@
 			root
 		</property>
 		<property name="hibernate.connection.password">
-			9505
+			core
 		</property>
 		
 		<!-- c3p0 configuration -->

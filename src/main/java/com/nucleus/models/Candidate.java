@@ -5,6 +5,9 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -21,7 +24,7 @@ public class Candidate {
 	private String candidateCivilStatus;
 	private String candidateGenre;
 	private int candidateAge;
-	private String candidateMunicipalityBorn;//Corregir nombre en BDA *Municipality
+	private String candidateMunicipalityBorn;
 	private String candidateLocalityBorn;
 	private String candidateStateBorn;
 	private String candidateCurrentStreet;
@@ -40,20 +43,20 @@ public class Candidate {
     private String candidateFatherOccupation;
     private int candidateMotherPhone;
     private int candidateFatherPhone;
-    private  String candidateMiddleSchool; ///Corregir nombre _
+    private  String candidateMiddleSchool;
     private String candidateMunicipalitySchool;
     private String candidateStateSchool;
     private String candidateSchoolType;
     private String candidateSchoolRegime;
     private String candidateSchoolKey;
     private Date candidateEndDate;
+    private int candidateScore;
     
-	private Health health; //relacion 
+	private Health health; 
 	private Preference preference;
-	private CandidateScore candidateScore; 
 	private Economy economy;
 	
-	
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_candidates")
 	public int getIdCandidate() {
 		return idCandidate;
@@ -208,7 +211,7 @@ public class Candidate {
 		this.candidateCellPhone = candidateCellPhone;
 	}
 	
-	@Column(name="cadidate_personal_phone")
+	@Column(name="candidate_personal_phone")
 	public int getCandidatePersonalPhone() {
 		return candidatePersonalPhone;
 	}
@@ -232,7 +235,7 @@ public class Candidate {
 		this.candidateFatherName = candidateFatherName;
 	}
 	
-	@Column(name="candidae_mother_name")
+	@Column(name="candidate_mother_name")
 	public String getCandidateMotherName() {
 		return candidateMotherName;
 	}
@@ -329,7 +332,7 @@ public class Candidate {
 	}
 	
 
-	@OneToOne (cascade= CascadeType.PERSIST)
+	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="id_health") //esta columna se va a unir con otra tabla 
 	public Health getHealth() {
 		return health;
@@ -338,8 +341,8 @@ public class Candidate {
 		this.health = health;
 	}
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="idPreference")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_preferences")
 	public Preference getPreference() {
 		return preference;
 	}
@@ -347,17 +350,8 @@ public class Candidate {
 		this.preference = preference;
 	}
 	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="idScore")
-	public CandidateScore getCandidateScore(){
-		return candidateScore;
-	}
-	public void setCandidateScore(CandidateScore candidateScore) {
-		this.candidateScore = candidateScore;
-	}
-	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name="idEconomy")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="id_economy")
 	public Economy getEconomy() {
 		return economy;
 	}
