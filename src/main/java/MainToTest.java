@@ -46,18 +46,78 @@ public class MainToTest {
 		operations.insertSchoolInformation();*/
 		
 		/*Institute inst = new Institute();
-		inst.setIdInstitute(1);
-		inst.setInstituteAddress("Guadalajara");
-		inst.setInstituteName("CBIS 38");
+		inst.setIdInstitute(2);
+		inst.setInstituteName("CBTIS38");
+		inst.setInstituteAddress("GUADALAJARA");
 		inst.setInstitutePhone("3333333333");
+		
+		Administrator administrator = new Administrator();
+		administrator.setAdminName("Omar");
+		administrator.setAdminLastNameFather("Palma");
+		administrator.setAdminLastNameMother("Nuñez");
+		administrator.setAdminPassword("admin");
+		administrator.setAdminRFC("PANEXXXXXXXX");
+		administrator.setAdminUsername("admin");
+		administrator.setIdInstitute(inst);
+		
+		AdministratorDAO administratorDAO = new AdministratorDAO();
+		administratorDAO.create(administrator);*/
+		
+		/*Institute inst = new Institute();
+		inst.setIdInstitute(2);
+		inst.setInstituteName("CBTIS38");
+		inst.setInstituteAddress("GUADALAJARA");
+		inst.setInstitutePhone("3333333333");
+		
+		Subject subject1 = new Subject();
+		subject1.setSubjectKeyCode(1);
+		subject1.setSubjectName("FÍSICA I");
+		subject1.setSubjectLevel(4);
+		
+		Subject subject2 = new Subject();
+		subject2.setSubjectKeyCode(2);
+		subject2.setSubjectName("CÁLCULO DIFERENCIAL");
+		subject2.setSubjectLevel(4);
+		
+		Speciality spe1 = new Speciality();
+		spe1.setSpecialityKeycode(1);
+		spe1.setSpecialityName("ELECTRÓNICA");
+		
+		Speciality spe2 = new Speciality();
+		spe2.setSpecialityKeycode(3);
+		spe2.setSpecialityName("LABORATORISTA QUÍMICO");
+		
+		Teacher teacher = new Teacher();
+		teacher.setTeacherName("Erick Omar");
+		teacher.setTeacherLastNameFather("Palma");
+		teacher.setTeacherLastNameMother("Nuñez");
+		teacher.setTeacherUsername("test");
+		teacher.setTeacherPassword("test");
+		teacher.setTeacherGenre('H');
+		teacher.setTeacherRFC("PANEXXXXXXXX");
+		teacher.setIdInstitute(inst);
+		
+		teacher.getSubjects().add(subject1);
+		teacher.getSubjects().add(subject2);
+		teacher.getSpecialities().add(spe1);
+		teacher.getSpecialities().add(spe2);
+		
+		TeacherDAO dao = new TeacherDAO();
+		System.out.println(dao.saveTeacher(teacher));*/
+		
+		
+		/*Institute inst = new Institute();
+		inst.setIdInstitute(1);
+		inst.setInstituteName("CBTIS NO. 38");
 		
 		Teacher teacher = new Teacher();
 		teacher.setIdTeacher(3);
 		teacher.setTeacherName("Erick Omar");
-		teacher.setTeacherLastName("Palm Nuñez");
+		teacher.setTeacherLastNameFather("Palma");
+		teacher.setTeacherLastNameMother("Nuñez");
 		teacher.setTeacherUsername("test");
 		teacher.setTeacherPassword("test");
-		teacher.setTeaherGenre('H');
+		teacher.setTeacherGenre('H');
 		teacher.setTeacherRFC("PANEXXXXXXXX");
 		teacher.setIdInstitute(inst);
 		
@@ -99,47 +159,7 @@ public class MainToTest {
 		
 		SubjectDAO sub = new SubjectDAO();
 		sub.getSubjectsByTeacher(teacher);*/
-		
-		/*Institute inst = new Institute();
-		inst.setIdInstitute(1);
-		inst.setInstituteAddress("XXXXXXXXXXXXXXX");
-		inst.setInstituteName("CBTIS38");
-		inst.setInstitutePhone("3333333333");
-		
-		Subject subject1 = new Subject();
-		subject1.setSubjectKeyCode(1);
-		subject1.setSubjectName("FÍSICA I");
-		subject1.setSubjectLevel(4);
-		
-		Subject subject2 = new Subject();
-		subject2.setSubjectKeyCode(2);
-		subject2.setSubjectName("CÁLCULO DIFERENCIAL");
-		subject2.setSubjectLevel(4);
-		
-		Speciality spe1 = new Speciality();
-		spe1.setSpecialityKeycode(1);
-		spe1.setSpecialityName("ELECTRÓNICA");
-		
-		Speciality spe2 = new Speciality();
-		spe2.setSpecialityKeycode(3);
-		spe2.setSpecialityName("LABORATORISTA QUÍMICO");
-		
-		Teacher teacher = new Teacher();
-		teacher.setTeacherName("Erick Omar");
-		teacher.setTeacherLastName("Palma Nuñez");
-		teacher.setTeacherUsername("test2");
-		teacher.setTeacherPassword("test2");
-		teacher.setTeaherGenre('H');
-		teacher.setTeacherRFC("PANEXXXXXXXX");
-		teacher.setIdInstitute(inst);
-		
-		teacher.getSubjects().add(subject1);
-		teacher.getSubjects().add(subject2);
-		teacher.getSpecialities().add(spe1);
-		teacher.getSpecialities().add(spe2);
-		
-		TeacherDAO dao = new TeacherDAO();
-		dao.saveTeacher(teacher);*/
+	
 
 		/*StatisticsDAO sta = new StatisticsDAO();
 		StatisticsForm st = sta.getDataStatisticsOptions();
@@ -160,11 +180,7 @@ public class MainToTest {
 		for(Administrator item: list)
 			System.out.println(item.getAdminName());*/
 		
-		
-		
-		
 		/*
-		
 		Institute inst = new Institute();
 		inst.setIdInstitute(1);
 		inst.setInstituteAddress("address");

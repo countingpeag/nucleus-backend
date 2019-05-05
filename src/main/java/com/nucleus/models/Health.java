@@ -24,7 +24,7 @@ public class Health {
 	private String healthLaterality;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id_healt")
+	@Column(name="id_health")
 	public int getIdHealth() {
 		return idHealth;
 	}

@@ -34,15 +34,15 @@ public class Candidate {
 	private String candidateCurrentMunicipality;
 	private String candidateCurrentLocality;
 	private String candidateCurrentState;
-	private int candidateCellPhone;
-	private int candidatePersonalPhone;
+	private long candidateCellPhone;
+	private long candidatePersonalPhone;
     private String candidateEmail;
     private String candidateFatherName;
     private String candidateMotherName;
     private String candidateMotherOccupation;
     private String candidateFatherOccupation;
-    private int candidateMotherPhone;
-    private int candidateFatherPhone;
+    private long candidateMotherPhone;
+    private long candidateFatherPhone;
     private  String candidateMiddleSchool;
     private String candidateMunicipalitySchool;
     private String candidateStateSchool;
@@ -204,18 +204,18 @@ public class Candidate {
 	}
 	
 	@Column(name="candidate_cellphone")
-	public int getCandidateCellPhone() {
+	public long getCandidateCellPhone() {
 		return candidateCellPhone;
 	}
-	public void setCandidateCellPhone(int candidateCellPhone) {
+	public void setCandidateCellPhone(long candidateCellPhone) {
 		this.candidateCellPhone = candidateCellPhone;
 	}
 	
 	@Column(name="candidate_personal_phone")
-	public int getCandidatePersonalPhone() {
+	public long getCandidatePersonalPhone() {
 		return candidatePersonalPhone;
 	}
-	public void setCandidatePersonalPhone(int candidatePersonalPhone) {
+	public void setCandidatePersonalPhone(long candidatePersonalPhone) {
 		this.candidatePersonalPhone = candidatePersonalPhone;
 	}
 	
@@ -260,18 +260,18 @@ public class Candidate {
 	}
 	
 	@Column(name="candidate_mother_phone")
-	public int getCandidateMotherPhone() {
+	public long getCandidateMotherPhone() {
 		return candidateMotherPhone;
 	}
-	public void setCandidateMotherPhone(int candidateMotherPhone) {
+	public void setCandidateMotherPhone(long candidateMotherPhone) {
 		this.candidateMotherPhone = candidateMotherPhone;
 	}
 	
 	@Column(name="candidate_father_phone")
-	public int getCandidateFatherPhone() {
+	public long getCandidateFatherPhone() {
 		return candidateFatherPhone;
 	}
-	public void setCandidateFatherPhone(int candidateFatherPhone) {
+	public void setCandidateFatherPhone(long candidateFatherPhone) {
 		this.candidateFatherPhone = candidateFatherPhone;
 	}
 	
@@ -331,6 +331,13 @@ public class Candidate {
 		this.candidateEndDate = candidateEndDate;
 	}
 	
+	@Column(name="candidate_score")
+	public int getCandidateScore() {
+		return candidateScore;
+	}
+	public void setCandidateScore(int candidateScore) {
+		this.candidateScore = candidateScore;
+	}
 
 	@OneToOne (cascade = CascadeType.ALL)
 	@JoinColumn(name="id_health") //esta columna se va a unir con otra tabla 
