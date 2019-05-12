@@ -18,6 +18,8 @@ import com.nucleus.dao.SubjectDAO;
 import com.nucleus.dao.TeacherDAO;
 import com.nucleus.models.Teacher;
 import com.nucleus.requestModels.ScoresStudents;
+import com.nucleus.requestModels.TeacherDataReport;
+import com.nucleus.requestModels.TeacherReport;
 import com.nucleus.models.Group;
 import com.nucleus.models.Score;
 import com.nucleus.models.Speciality;
@@ -104,6 +106,14 @@ public class TeacherServices {
 			return teacherDAO.saveTeacher(teacher);
 		}
 		return false;
+	}
+	
+	@POST
+	@Path("/dataReport")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public TeacherDataReport retrieveDataToTeacherReport(TeacherReport data) {
+		return new TeacherDataReport();
 	}
 	
 }
