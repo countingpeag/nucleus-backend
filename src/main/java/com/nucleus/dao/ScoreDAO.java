@@ -127,77 +127,75 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		}
 	}
 	
-	public List<Score> getStudentsApproved(int subjectKeyCode, int specility, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long getStudentsApproved(int subjectKeyCode, int specility, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(builder.and(builder.and(builder.and(builder.and(
+			query.select(builder.count(root)).where(builder.and(builder.and(builder.and(builder.and(
 					builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 					builder.greaterThanOrEqualTo(root.<Integer>get(partial), 6)), 
 					builder.equal(root.get("subjectKeycode"), subjectKeyCode)), 
 					builder.equal(root.get("studentTuition").get("idSpeciality"), specility)),
 					builder.equal(root.get("studentTuition").get("studentShift"), shift)));
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
-			
+			result = session.createQuery(query).getSingleResult();			
 			transaction.commit();
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 	
-	public List<Score> getStudentsNotApproved(int subjectKeyCode, int specility, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long getStudentsNotApproved(int subjectKeyCode, int specility, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(builder.and(builder.and(builder.and(builder.and(
+			query.select(builder.count(root)).where(builder.and(builder.and(builder.and(builder.and(
 												builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 												builder.lessThan(root.<Integer>get(partial), 6)), 
 												builder.equal(root.get("subjectKeycode"), subjectKeyCode)), 
 												builder.equal(root.get("studentTuition").get("idSpeciality"), specility)),
 												builder.equal(root.get("studentTuition").get("studentShift"), shift)));
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
-			
+			result = session.createQuery(query).getSingleResult();
 			transaction.commit();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 	
-	public List<Score> getStudentsNotApprovedM(int subjectKeyCode, int specility, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long getStudentsNotApprovedM(int subjectKeyCode, int specility, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(builder.and(builder.and(builder.and(builder.and(builder.and(
+			query.select(builder.count(root)).where(builder.and(builder.and(builder.and(builder.and(builder.and(
 												 builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 												 builder.lessThan(root.<Integer>get(partial), 6)), 
 												 builder.equal(root.get("subjectKeycode"), subjectKeyCode)), 
@@ -205,29 +203,28 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 												 builder.equal(root.get("studentTuition").get("studentGenre"), 'H')),
 												 builder.equal(root.get("studentTuition").get("studentShift"), shift)));
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
-			
+			result = session.createQuery(query).getSingleResult();
 			transaction.commit();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 	
-	public List<Score> getStudentsNotApprovedF(int subjectKeyCode, int specility, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long getStudentsNotApprovedF(int subjectKeyCode, int specility, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(builder.and(builder.and(builder.and(builder.and(builder.and(
+			query.select(builder.count(root)).where(builder.and(builder.and(builder.and(builder.and(builder.and(
 												 builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 												 builder.lessThan(root.<Integer>get(partial), 6)), 
 												 builder.equal(root.get("subjectKeycode"), subjectKeyCode)), 
@@ -235,30 +232,29 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 												 builder.equal(root.get("studentTuition").get("studentGenre"), 'M')),
 												 builder.equal(root.get("studentTuition").get("studentShift"), shift)));
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
-			
+			result = session.createQuery(query).getSingleResult();
 			transaction.commit();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 	
 
-	public List<Score> retrieveStudentsApproved(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long retrieveStudentsApproved(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(
+			query.select(builder.count(root)).where(
 					builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 					builder.greaterThanOrEqualTo(root.<Integer>get(partial), 6), 
 					builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
@@ -267,30 +263,29 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 					builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
 					);
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
-			
+			result = session.createQuery(query).getSingleResult();
 			transaction.commit();
+			
 		}
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 	
-	public List<Score> retrieveStudentsNotApproved(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long retrieveStudentsNotApproved(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(
+			query.select(builder.count(root)).where(
 										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 										builder.lessThan(root.<Integer>get(partial), 6), 
 										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
@@ -299,29 +294,28 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
 									);
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
-			
+			result = session.createQuery(query).getSingleResult();
 			transaction.commit();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 	
-	public List<Score> retrieveStudentsNotApprovedM(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long retrieveStudentsNotApprovedM(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(
+			query.select(builder.count(root)).where(
 										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 									 	builder.lessThan(root.<Integer>get(partial), 6), 
 									 	builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
@@ -331,29 +325,28 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
 									);
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
-			
+			result = session.createQuery(query).getSingleResult();
 			transaction.commit();
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
 	}
 	
-	public List<Score> retrieveStudentsNotApprovedF(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
-		List<Score> list = new ArrayList<Score>();
+	public Long retrieveStudentsNotApprovedF(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+		Long result = null;
 		
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			Transaction transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Score> query = builder.createQuery(Score.class);
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
 			
 			Root<Score> root = query.from(Score.class);
-			query.select(root).where(
+			query.select(builder.count(root)).where(
 										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
 										builder.lessThan(root.<Integer>get(partial), 6), 
 										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
@@ -363,15 +356,222 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
 									);
 			
-			Query<Score> q = session.createQuery(query);
-			list = q.getResultList();
+			result = session.createQuery(query).getSingleResult();
 			
 			transaction.commit();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		
-		return list;
+		return result;
+	}
+
+	
+	public Long getRegisteredStudents(Subject subjectKeyCode, Speciality specialty, Group group, String shift){
+		Long result = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
+			
+			Root<Score> root = query.from(Score.class);
+			query.select(builder.count(root)).where(
+										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
+										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
+										builder.equal(root.get("studentTuition").get("idSpeciality"), specialty.getSpecialityKeycode()),
+										builder.equal(root.get("studentTuition").get("studentShift"), shift),
+										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
+									);
+			
+			result = session.createQuery(query).getSingleResult();
+			transaction.commit();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return result;
+	}
+	
+	public Long getStudent0To50(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+		Long result = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
+			
+			Root<Score> root = query.from(Score.class);
+			query.select(builder.count(root)).where(
+										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
+										builder.lessThan(root.<Double>get(partial), 5.1),
+										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
+										builder.equal(root.get("studentTuition").get("idSpeciality"), specialty.getSpecialityKeycode()),
+										builder.equal(root.get("studentTuition").get("studentShift"), shift),
+										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
+									);
+			
+			result = session.createQuery(query).getSingleResult();
+			transaction.commit();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return result;
+	}
+	
+	public Long getStudent51To60(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+		Long result = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
+			
+			Root<Score> root = query.from(Score.class);
+			query.select(builder.count(root)).where(
+										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
+										builder.greaterThan(root.<Double>get(partial), 5.0),
+										builder.lessThan(root.<Double>get(partial), 6.1),
+										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
+										builder.equal(root.get("studentTuition").get("idSpeciality"), specialty.getSpecialityKeycode()),
+										builder.equal(root.get("studentTuition").get("studentShift"), shift),
+										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
+									);
+			
+			result = session.createQuery(query).getSingleResult();
+			transaction.commit();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return result;
+	}
+	
+	public Long getStudent61To70(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+		Long result = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
+			
+			Root<Score> root = query.from(Score.class);
+			query.select(builder.count(root)).where(
+										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
+										builder.greaterThan(root.<Double>get(partial), 6.0),
+										builder.lessThan(root.<Double>get(partial), 7.1),
+										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
+										builder.equal(root.get("studentTuition").get("idSpeciality"), specialty.getSpecialityKeycode()),
+										builder.equal(root.get("studentTuition").get("studentShift"), shift),
+										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
+									);
+			
+			result = session.createQuery(query).getSingleResult();
+			transaction.commit();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return result;
+	}
+	
+	public Long getStudent71To80(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+		Long result = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
+			
+			Root<Score> root = query.from(Score.class);
+			query.select(builder.count(root)).where(
+										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
+										builder.greaterThan(root.<Double>get(partial), 7.0),
+										builder.lessThan(root.<Double>get(partial), 8.1),
+										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
+										builder.equal(root.get("studentTuition").get("idSpeciality"), specialty.getSpecialityKeycode()),
+										builder.equal(root.get("studentTuition").get("studentShift"), shift),
+										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
+									);
+			
+			result = session.createQuery(query).getSingleResult();
+			transaction.commit();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return result;
+	}
+	
+	public Long getStudent81To90(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+		Long result = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
+			
+			Root<Score> root = query.from(Score.class);
+			query.select(builder.count(root)).where(
+										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
+										builder.greaterThan(root.<Double>get(partial), 8.0),
+										builder.lessThan(root.<Double>get(partial), 9.1),
+										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
+										builder.equal(root.get("studentTuition").get("idSpeciality"), specialty.getSpecialityKeycode()),
+										builder.equal(root.get("studentTuition").get("studentShift"), shift),
+										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
+									);
+			
+			result = session.createQuery(query).getSingleResult();
+			transaction.commit();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return result;
+	}
+	
+	public Long getStudent91To100(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+		Long result = null;
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			Transaction transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Long> query = builder.createQuery(Long.class);
+			
+			Root<Score> root = query.from(Score.class);
+			query.select(builder.count(root)).where(
+										builder.equal(root.get("studentTuition").get("studentLevel"), root.get("subjectKeycode").get("subjectLevel")),
+										builder.greaterThan(root.<Double>get(partial), 9.0),
+										builder.lessThan(root.<Double>get(partial), 10.1),
+										builder.equal(root.get("subjectKeycode"), subjectKeyCode.getSubjectKeyCode()), 
+										builder.equal(root.get("studentTuition").get("idSpeciality"), specialty.getSpecialityKeycode()),
+										builder.equal(root.get("studentTuition").get("studentShift"), shift),
+										builder.equal(root.get("studentTuition").get("idGroup"), group.getIdGroup())
+									);
+			
+			result = session.createQuery(query).getSingleResult();
+			transaction.commit();
+		}
+		catch(Exception e) {
+			
+		}
+		
+		return result;
 	}
 	
 	

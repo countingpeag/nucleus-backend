@@ -2,17 +2,17 @@ package com.nucleus.requestModels;
 
 public class DataStatistics {
 
-	private int approved;
-	private int notApproved;
-	private int men;
-	private int women;
+	private Long approved;
+	private Long notApproved;
+	private Long men;
+	private Long women;
 	private FirstPartial firstP;
 	private SecondPartial SecondP;
 	private ThirdPartial ThirdP;
 	
 	public DataStatistics() {}
 	
-	public DataStatistics(int approved, int notApproved, int men, int women, FirstPartial firstP, SecondPartial secondP,
+	public DataStatistics(Long approved, Long notApproved, Long men, Long women, FirstPartial firstP, SecondPartial secondP,
 			ThirdPartial thirdP) {
 		this.approved = approved;
 		this.notApproved = notApproved;
@@ -23,28 +23,28 @@ public class DataStatistics {
 		ThirdP = thirdP;
 	}
 	
-	public int getApproved() {
+	public Long getApproved() {
 		return approved;
 	}
-	public void setApproved(int approved) {
+	public void setApproved(Long approved) {
 		this.approved = approved;
 	}
-	public int getNotApproved() {
+	public Long getNotApproved() {
 		return notApproved;
 	}
-	public void setNotApproved(int notApproved) {
+	public void setNotApproved(Long notApproved) {
 		this.notApproved = notApproved;
 	}
-	public int getMen() {
+	public Long getMen() {
 		return men;
 	}
-	public void setMen(int men) {
+	public void setMen(Long men) {
 		this.men = men;
 	}
-	public int getWomen() {
+	public Long getWomen() {
 		return women;
 	}
-	public void setWomen(int women) {
+	public void setWomen(Long women) {
 		this.women = women;
 	}
 

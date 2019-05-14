@@ -16,6 +16,7 @@ import com.nucleus.dao.ScoreDAO;
 import com.nucleus.dao.SpecialityDAO;
 import com.nucleus.dao.SubjectDAO;
 import com.nucleus.dao.TeacherDAO;
+import com.nucleus.dao.TeacherReportDAO;
 import com.nucleus.models.Teacher;
 import com.nucleus.requestModels.ScoresStudents;
 import com.nucleus.requestModels.TeacherDataReport;
@@ -113,7 +114,8 @@ public class TeacherServices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public TeacherDataReport retrieveDataToTeacherReport(TeacherReport data) {
-		return new TeacherDataReport();
+		TeacherReportDAO reportDAO = new TeacherReportDAO();
+		return reportDAO.getTeacherReportData(data);
 	}
 	
 }

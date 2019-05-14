@@ -2,7 +2,7 @@ package com.nucleus.requestModels;
 
 public class TeacherDataReport {
 	
-	private int registeredStudents;
+	private Long registeredStudents;
 	private double approvedStudentsP1;
 	private double failedStudentsP1;
 	private double studentsScore050P1;
@@ -47,10 +47,10 @@ public class TeacherDataReport {
 	private double studentsDropOutFL;
 	private int studentsAbsecesFL;
 	
-	public int getRegisteredStudents() {
+	public Long getRegisteredStudents() {
 		return registeredStudents;
 	}
-	public void setRegisteredStudents(int registeredStudents) {
+	public void setRegisteredStudents(Long registeredStudents) {
 		this.registeredStudents = registeredStudents;
 	}
 	public double getApprovedStudentsP1() {
