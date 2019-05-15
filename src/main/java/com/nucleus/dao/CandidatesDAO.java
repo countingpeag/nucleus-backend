@@ -68,4 +68,30 @@ public class CandidatesDAO {
 	    return true;
 	 }					
 	
+	public List<Candidate> getAllSortedCandidates(){
+		transaction = null;
+		session = HibernateUtil.getSessionFactory().openSession();
+		List<Candidate> candidates = new ArrayList<Candidate>();
+	      try {
+	         transaction = session.beginTransaction();
+
+	         CriteriaBuilder builder = session.getCriteriaBuilder();
+	         CriteriaQuery<Candidate> query = builder.createQuery(Candidate.class);
+	         Root<Candidate> root = query.from(Candidate.class);
+	         query.orderBy(builder.desc(root.get("candidateScore")));
+	         
+	         Query<Candidate> q=session.createQuery(query);
+	         candidates = q.getResultList();
+	         
+	         transaction.commit();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         if (transaction != null) {
+	            transaction.rollback();
+	         }
+	      }
+	    
+	   return candidates;
+	}
+	
 }
