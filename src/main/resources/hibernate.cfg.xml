@@ -41,7 +41,7 @@
 		<mapping class="com.nucleus.models.News" />
 		<mapping class="com.nucleus.models.Schedule" />
 		<mapping class="com.nucleus.models.Score" />
-		<mapping class="com.nucleus.models.Speciality" />
+		<mapping class="com.nucleus.models.Specialty" />
 		<mapping class="com.nucleus.models.Student" />
 		<mapping class="com.nucleus.models.Subject" />
 		<mapping class="com.nucleus.models.Teacher" />

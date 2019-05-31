@@ -23,7 +23,7 @@ import com.nucleus.requestModels.TeacherDataReport;
 import com.nucleus.requestModels.TeacherReport;
 import com.nucleus.models.Group;
 import com.nucleus.models.Score;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.Subject;
 
 @Path("/teacher")
@@ -63,7 +63,7 @@ public class TeacherServices {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/specialities")
-	public List<Speciality> retrieveSpecialities(Teacher teacher){
+	public List<Specialty> retrieveSpecialities(Teacher teacher){
 		SpecialityDAO specialityDAO = new SpecialityDAO();
 		return specialityDAO.getSpecialitiesByTeacher(teacher);
 	}

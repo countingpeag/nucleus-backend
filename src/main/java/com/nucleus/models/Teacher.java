@@ -31,7 +31,7 @@ public class Teacher {
 	
 	private Institute idInstitute;
 	private List<Subject> subjects = new ArrayList<Subject>(); 
-	private List<Speciality> specialities = new ArrayList<Speciality>();
+	private List<Specialty> specialities = new ArrayList<Specialty>();
 	
 	public Teacher() {
 		
@@ -39,7 +39,7 @@ public class Teacher {
 
 	public Teacher(int idTeacher, String teacherName, String teacherLastNameFather, String teacherLastNameMother,
 			String teacherUsername, String teacherPassword, char teacherGenre, String teacherRFC, Institute idInstitute,
-			List<Subject> subjects, List<Speciality> specialities) {
+			List<Subject> subjects, List<Specialty> specialities) {
 		super();
 		this.idTeacher = idTeacher;
 		this.teacherName = teacherName;
@@ -153,11 +153,11 @@ public class Teacher {
 	@JoinTable(name="teachers_has_specialities",
 				joinColumns = { @JoinColumn(name="TEACHERS_id_teachers")},
 				inverseJoinColumns = { @JoinColumn(name="SPECIALITIES_specialty_keycode")})
-	public List<Speciality> getSpecialities() {
+	public List<Specialty> getSpecialities() {
 		return specialities;
 	}
 
-	public void setSpecialities(List<Speciality> specialities) {
+	public void setSpecialities(List<Specialty> specialities) {
 		this.specialities = specialities;
 	}
 	

@@ -50,11 +50,14 @@ public class Candidate {
     private String candidateSchoolRegime;
     private String candidateSchoolKey;
     private Date candidateEndDate;
+    private String candidateShift;
     private int candidateScore;
+    private Date candidateLastupdate;
     
 	private Health health; 
 	private Preference preference;
 	private Economy economy;
+	private Specialty specialty;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_candidates")
@@ -331,12 +334,30 @@ public class Candidate {
 		this.candidateEndDate = candidateEndDate;
 	}
 	
+	@Column(name="candidate_shift")
+	public String getCandidateShift() {
+		return candidateShift;
+	}
+
+	public void setCandidateShift(String candidateShift) {
+		this.candidateShift = candidateShift;
+	}
+
 	@Column(name="candidate_score")
 	public int getCandidateScore() {
 		return candidateScore;
 	}
 	public void setCandidateScore(int candidateScore) {
 		this.candidateScore = candidateScore;
+	}
+	
+	@Column( name="candidate_lastupdate" )
+	public Date getCandidateLastupdate() {
+		return candidateLastupdate;
+	}
+
+	public void setCandidateLastupdate(Date candidateLastupdate) {
+		this.candidateLastupdate = candidateLastupdate;
 	}
 
 	@OneToOne (cascade = CascadeType.ALL)
@@ -365,4 +386,15 @@ public class Candidate {
 	public void setEconomy(Economy economy) {
 		this.economy = economy;
 	}
+
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name="id_specialty")
+	public Specialty getSpecialty() {
+		return specialty;
+	}
+
+	public void setSpecialty(Specialty specialty) {
+		this.specialty = specialty;
+	}
+	
 }

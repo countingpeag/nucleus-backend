@@ -9,16 +9,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="specialities")
-public class Speciality {
+public class Specialty {
 	
 	private int specialityKeycode;
 	private String specialityName;
 	
-	public Speciality(){
+	public Specialty(){
 		
 	}
 	
-	public Speciality(int specialityKeycode, String specialityName) {
+	public Specialty(int specialityKeycode, String specialityName) {
 		this.specialityKeycode = specialityKeycode;
 		this.specialityName = specialityName;
 	}

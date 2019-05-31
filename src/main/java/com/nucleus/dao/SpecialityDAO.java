@@ -14,17 +14,17 @@ import org.hibernate.query.Query;
 
 import com.nucleus.hibernate.HibernateUtil;
 import com.nucleus.interfaces.DataAccessObjectInterface;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.Teacher;
 
-public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
+public class SpecialityDAO implements DataAccessObjectInterface<Specialty>{
 	SessionFactory sf;
 	Session session;	
 	boolean response=false;
 	String query;
 	
 	@SuppressWarnings("finally")
-	public boolean create(Speciality obj) {
+	public boolean create(Specialty obj) {
 		// TODO Auto-generated method stub
 		try {
 			sf = HibernateUtil.getSessionFactory();
@@ -44,7 +44,7 @@ public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
 	}
 
 	@SuppressWarnings("finally")
-	public boolean delete(Speciality obj) {
+	public boolean delete(Specialty obj) {
 		// TODO Auto-generated method stub
 		try {
 			//query = "DELETE Administrator adm WHERE adm.idAdministrator = ?";
@@ -65,7 +65,7 @@ public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
 	}
 
 	@SuppressWarnings("finally")
-	public boolean update(Speciality obj) {
+	public boolean update(Specialty obj) {
 		// TODO Auto-generated method stub
 		try {
 			sf = HibernateUtil.getSessionFactory();
@@ -85,14 +85,14 @@ public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
 	}
 
 	@SuppressWarnings("finally")
-	public Speciality read(Speciality obj) {
+	public Specialty read(Specialty obj) {
 		// TODO Auto-generated method stub
-		Speciality spc =  null;
+		Specialty spc =  null;
 		try {
 			query = "FROM Speciality spc WHERE spc.specialityKeycode = ?";
 			sf = HibernateUtil.getSessionFactory();
 			session = sf.openSession();
-			spc	=	(Speciality)session.createQuery(query)
+			spc	=	(Specialty)session.createQuery(query)
 					.setParameter(1, obj.getSpecialityKeycode())
 					.uniqueResult();
 		}catch(Exception ex) {
@@ -104,19 +104,19 @@ public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
 		}
 	}
 
-	public List<Speciality> readAll() {
+	public List<Specialty> readAll() {
 		session = HibernateUtil.getSessionFactory().openSession();
-		List<Speciality> specialities = null;
+		List<Specialty> specialities = null;
 		
 	      try {
 
 	         CriteriaBuilder builder = session.getCriteriaBuilder();
-	         CriteriaQuery<Speciality> query = builder.createQuery(Speciality.class);
+	         CriteriaQuery<Specialty> query = builder.createQuery(Specialty.class);
 	         
-	         Root<Speciality> root = query.from(Speciality.class);
+	         Root<Specialty> root = query.from(Specialty.class);
 	         query.select(root);
 	         
-	         Query<Speciality> q=session.createQuery(query);
+	         Query<Specialty> q=session.createQuery(query);
 	         specialities = q.getResultList();
 	         
 	      } catch (Exception e) {
@@ -126,21 +126,21 @@ public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
 	      return specialities;
 	}
 
-	public Speciality getSpecialityByName(String name) {
+	public Specialty getSpecialityByName(String name) {
 		
 		Transaction transaction = null;
-		Speciality speciality = null;
+		Specialty speciality = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
 			transaction = session.beginTransaction();
 			
 			CriteriaBuilder builder = session.getCriteriaBuilder();
-			CriteriaQuery<Speciality> query = builder.createQuery(Speciality.class);
+			CriteriaQuery<Specialty> query = builder.createQuery(Specialty.class);
 			
-			Root<Speciality> root = query.from(Speciality.class);
+			Root<Specialty> root = query.from(Specialty.class);
 			query.select(root).where(builder.equal(root.get("specialityName"), name));
 			
-			Query<Speciality> q = session.createQuery(query);
+			Query<Specialty> q = session.createQuery(query);
 			speciality = q.getSingleResult();
 			
 			transaction.commit();
@@ -154,9 +154,9 @@ public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Speciality> getSpecialitiesByTeacher(Teacher teacher){
+	public List<Specialty> getSpecialitiesByTeacher(Teacher teacher){
 		List<Object[]> objects = null;
-		List<Speciality> specialities = new ArrayList<Speciality>();
+		List<Specialty> specialities = new ArrayList<Specialty>();
 		
 		String query = "SELECT specialty_keycode, specialty_name FROM specialities AS spe "
 				+ "INNER JOIN teachers_has_specialities AS ths "
@@ -168,7 +168,7 @@ public class SpecialityDAO implements DataAccessObjectInterface<Speciality>{
 			objects = session.createNativeQuery(query).list();
 			
 			for(Object[] object: objects) {
-				Speciality spe = new Speciality();
+				Specialty spe = new Specialty();
 				spe.setSpecialityKeycode((Integer)object[0]);
 				spe.setSpecialityName((String)object[1]);
 				

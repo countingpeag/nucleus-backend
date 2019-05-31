@@ -28,7 +28,7 @@ public class FileServices {
 			@FormDataParam("file") InputStream uploadedInputStream,
 			@FormDataParam("file") FormDataContentDisposition fileDetail) {
 		
-		String uploadedFileLocation = "C://Users/Omar/Desktop/test/" + fileDetail.getFileName();
+		String uploadedFileLocation = "C:\\Users\\Omar\\Desktop\\test" + fileDetail.getFileName();
 		
 		writeToFile(uploadedInputStream, uploadedFileLocation);
 

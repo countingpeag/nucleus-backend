@@ -123,15 +123,6 @@ public class AdministratorServices {
 		return validationForm;
 	}
 	
-	@GET
-	@Path("/candidatesSelection")
-	@Produces(MediaType.APPLICATION_JSON)
-	public CandidatesSelection retrieveCandiatesSelection() {
-		CandidateSelectionDAO candidateSelection = new CandidateSelectionDAO();
-		
-		return candidateSelection.getCandidatesSelected();
-	}
-	
 	@POST
 	@Path("/students/{token}")
 	@Consumes(MediaType.APPLICATION_JSON)

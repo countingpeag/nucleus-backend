@@ -1,20 +1,20 @@
 package com.nucleus.requestModels;
 
 import com.nucleus.models.Group;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.Subject;
 
 public class ScoreRequestTeacher {
 
-	private Speciality specialty;
+	private Specialty specialty;
 	private Subject subject;
 	private Group group;
 	private String shift;
 	
-	public Speciality getSpecialty() {
+	public Specialty getSpecialty() {
 		return specialty;
 	}
-	public void setSpecialty(Speciality specialty) {
+	public void setSpecialty(Specialty specialty) {
 		this.specialty = specialty;
 	}
 	public Subject getSubject() {

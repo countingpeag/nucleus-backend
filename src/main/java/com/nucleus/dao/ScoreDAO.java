@@ -16,7 +16,7 @@ import com.nucleus.hibernate.HibernateUtil;
 import com.nucleus.interfaces.DataAccessObjectInterface;
 import com.nucleus.models.Group;
 import com.nucleus.models.Score;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.Student;
 import com.nucleus.models.Subject;
 
@@ -243,7 +243,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 	}
 	
 
-	public Long retrieveStudentsApproved(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+	public Long retrieveStudentsApproved(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial) {
 		Long result = null;
 		
 		try {
@@ -274,7 +274,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long retrieveStudentsNotApproved(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+	public Long retrieveStudentsNotApproved(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial) {
 		Long result = null;
 		
 		try {
@@ -304,7 +304,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long retrieveStudentsNotApprovedM(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+	public Long retrieveStudentsNotApprovedM(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial) {
 		Long result = null;
 		
 		try {
@@ -335,7 +335,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long retrieveStudentsNotApprovedF(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial) {
+	public Long retrieveStudentsNotApprovedF(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial) {
 		Long result = null;
 		
 		try {
@@ -367,7 +367,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 	}
 
 	
-	public Long getRegisteredStudents(Subject subjectKeyCode, Speciality specialty, Group group, String shift){
+	public Long getRegisteredStudents(Subject subjectKeyCode, Specialty specialty, Group group, String shift){
 		Long result = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -395,7 +395,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long getStudent0To50(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+	public Long getStudent0To50(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial){
 		Long result = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -424,7 +424,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long getStudent51To60(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+	public Long getStudent51To60(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial){
 		Long result = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -454,7 +454,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long getStudent61To70(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+	public Long getStudent61To70(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial){
 		Long result = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -484,7 +484,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long getStudent71To80(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+	public Long getStudent71To80(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial){
 		Long result = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -514,7 +514,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long getStudent81To90(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+	public Long getStudent81To90(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial){
 		Long result = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -544,7 +544,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		return result;
 	}
 	
-	public Long getStudent91To100(Subject subjectKeyCode, Speciality specialty, Group group, String shift, String partial){
+	public Long getStudent91To100(Subject subjectKeyCode, Specialty specialty, Group group, String shift, String partial){
 		Long result = null;
 		try {
 			session = HibernateUtil.getSessionFactory().openSession();
@@ -616,7 +616,7 @@ public class ScoreDAO implements DataAccessObjectInterface<Score> {
 		}
 	}
 	
-	public List<Score> getStudentsByTest(Subject subject, Group group, Speciality speciality, String shift){
+	public List<Score> getStudentsByTest(Subject subject, Group group, Specialty speciality, String shift){
 		session = HibernateUtil.getSessionFactory().openSession();
 		List<Score> scores = null;
 		try {

@@ -20,7 +20,7 @@ import com.nucleus.dao.SubjectDAO;
 import com.nucleus.models.Group;
 import com.nucleus.models.Institute;
 import com.nucleus.models.Score;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.Student;
 import com.nucleus.models.Subject;
 
@@ -115,7 +115,7 @@ public class FileOperations {
 		if(!group.equals("") && !speciality.equals("") && !institute.equals("")) {
 			
 			Group groupObj = groupDAO.getGroupByName(group);
-			Speciality specialityObj = specialityDAO.getSpecialityByName(speciality);
+			Specialty specialityObj = specialityDAO.getSpecialityByName(speciality);
 			Institute instituteObj = instituteDAO.getInstituteByName(institute);
 			
 			Student student = new Student();
@@ -140,7 +140,7 @@ public class FileOperations {
 	
 	public void insertSchoolInformation() throws IOException, InvalidFormatException  {
 		
-		Workbook workbook = WorkbookFactory.create(new File("C://Users/Omar/Desktop/test/detalle-de-calificaciones.xlsx"));
+		Workbook workbook = WorkbookFactory.create(new File("C:/Users/Omar/Desktop/test/detalle-de-calificaciones.xlsx"));
 		
 		Sheet sheet = workbook.getSheetAt(0);
 		
@@ -173,7 +173,7 @@ public class FileOperations {
 				institutes.put(institute, institute);
 			}
 			if(specialities.get(speciality)==null && speciality!="") {
-				Speciality specialityObj = new Speciality();
+				Specialty specialityObj = new Specialty();
 				specialityObj.setSpecialityName(speciality);
 				specialityDAO.create(specialityObj);
 				specialities.put(speciality, speciality);

@@ -4,14 +4,14 @@ import java.util.List;
 
 public class ValidationForm {
 	
-	private List<Speciality> specialities;
+	private List<Specialty> specialities;
 	private List<Group> groups;
 	private String shift;
 	
-	public List<Speciality> getSpecialities() {
+	public List<Specialty> getSpecialities() {
 		return specialities;
 	}
-	public void setSpecialities(List<Speciality> specialities) {
+	public void setSpecialities(List<Specialty> specialities) {
 		this.specialities = specialities;
 	}
 	public List<Group> getGroups() {

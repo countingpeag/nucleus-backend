@@ -26,7 +26,7 @@ public class Student {
 	private int studentLevel;
 	private String studentShift;
 	private Group idGroup;
-	private Speciality idSpeciality;
+	private Specialty idSpeciality;
 	private Institute idInstitute;
 	private char studentVisibility;		
 	
@@ -38,7 +38,7 @@ public class Student {
 
 	public Student(String studentTuition, String studentName, String studentLastNameFather,
 			String studentLastNameMother, String studentPassword, char studentGenre, int studentLevel,
-			String studentShift, Group idGroup, Speciality idSpeciality, Institute idInstitute, char studentVisibility,
+			String studentShift, Group idGroup, Specialty idSpeciality, Institute idInstitute, char studentVisibility,
 			List<Schedule> schedules) {
 		super();
 		this.studentTuition = studentTuition;
@@ -135,10 +135,10 @@ public class Student {
 	
 	@ManyToOne
 	@JoinColumn(name="SPECIALITIES_specialty_keycode", foreignKey=@ForeignKey(name="specialty_keycode"))
-	public Speciality getIdSpeciality() {
+	public Specialty getIdSpeciality() {
 		return idSpeciality;
 	}
-	public void setIdSpeciality(Speciality idSpeciality) {
+	public void setIdSpeciality(Specialty idSpeciality) {
 		this.idSpeciality = idSpeciality;
 	}
 	

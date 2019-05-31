@@ -1,19 +1,19 @@
 package com.nucleus.requestModels;
 
 import com.nucleus.models.Group;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 
 public class StudentRequestModel {
 
-	private Speciality speciality;
+	private Specialty speciality;
 	private Group group;
 	private String shift;
 	private String tuition;
 	
-	public Speciality getSpeciality() {
+	public Specialty getSpeciality() {
 		return speciality;
 	}
-	public void setSpeciality(Speciality speciality) {
+	public void setSpeciality(Specialty speciality) {
 		this.speciality = speciality;
 	}
 	public Group getGroup() {

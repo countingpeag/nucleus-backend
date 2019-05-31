@@ -1,18 +1,18 @@
 package com.nucleus.requestModels;
 
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.Subject;
 
 public class ScoreRequestModel {
 
-	private Speciality speciality;
+	private Specialty speciality;
 	private Subject subject;
 	private String shift;
 	
-	public Speciality getSpeciality() {
+	public Specialty getSpeciality() {
 		return speciality;
 	}
-	public void setSpeciality(Speciality speciality) {
+	public void setSpeciality(Specialty speciality) {
 		this.speciality = speciality;
 	}
 	public Subject getSubject() {

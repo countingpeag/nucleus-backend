@@ -1,7 +1,7 @@
 package com.nucleus.dao;
 
 import com.nucleus.models.Group;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.StatisticsForm;
 import com.nucleus.models.Subject;
 import com.nucleus.requestModels.DataStatistics;
@@ -53,7 +53,7 @@ public class StatisticsDAO {
 		
 	}
 	
-	public DataStatistics retrieveDataStatisticsForTeacher(Subject subjectKeyCode, Speciality specialty, Group group, String shift) {
+	public DataStatistics retrieveDataStatisticsForTeacher(Subject subjectKeyCode, Specialty specialty, Group group, String shift) {
 		
 		ScoreDAO score =new ScoreDAO();
 		FirstPartial p1 = new FirstPartial();

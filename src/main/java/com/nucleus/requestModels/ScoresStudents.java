@@ -1,14 +1,14 @@
 package com.nucleus.requestModels;
 
 import com.nucleus.models.Group;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.Subject;
 
 public class ScoresStudents {
 
 	private Subject subject;
 	private Group group; 
-	private Speciality specialty;
+	private Specialty specialty;
 	private String shift;
 	
 	public Subject getSubject() {
@@ -23,10 +23,10 @@ public class ScoresStudents {
 	public void setGroup(Group group) {
 		this.group = group;
 	}
-	public Speciality getSpecialty() {
+	public Specialty getSpecialty() {
 		return specialty;
 	}
-	public void setSpecialty(Speciality specialty) {
+	public void setSpecialty(Specialty specialty) {
 		this.specialty = specialty;
 	}
 	public String getShift() {

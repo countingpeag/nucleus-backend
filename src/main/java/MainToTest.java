@@ -25,7 +25,7 @@ import com.nucleus.models.Group;
 import com.nucleus.models.Institute;
 import com.nucleus.models.Schedule;
 import com.nucleus.models.Score;
-import com.nucleus.models.Speciality;
+import com.nucleus.models.Specialty;
 import com.nucleus.models.StatisticsForm;
 import com.nucleus.models.Student;
 import com.nucleus.models.Subject;
@@ -46,10 +46,8 @@ public class MainToTest {
 		operations.insertSchoolInformation();*/
 		
 		/*Institute inst = new Institute();
-		inst.setIdInstitute(2);
-		inst.setInstituteName("CBTIS38");
-		inst.setInstituteAddress("GUADALAJARA");
-		inst.setInstitutePhone("3333333333");
+		inst.setIdInstitute(1);
+		inst.setInstituteName("CBTIS NO. 38");
 		
 		Administrator administrator = new Administrator();
 		administrator.setAdminName("Omar");
@@ -64,10 +62,8 @@ public class MainToTest {
 		administratorDAO.create(administrator);*/
 		
 		/*Institute inst = new Institute();
-		inst.setIdInstitute(2);
-		inst.setInstituteName("CBTIS38");
-		inst.setInstituteAddress("GUADALAJARA");
-		inst.setInstitutePhone("3333333333");
+		inst.setIdInstitute(1);
+		inst.setInstituteName("CBTIS NO. 38");
 		
 		Subject subject1 = new Subject();
 		subject1.setSubjectKeyCode(1);
@@ -79,12 +75,12 @@ public class MainToTest {
 		subject2.setSubjectName("CÁLCULO DIFERENCIAL");
 		subject2.setSubjectLevel(4);
 		
-		Speciality spe1 = new Speciality();
-		spe1.setSpecialityKeycode(1);
+		Specialty spe1 = new Specialty();
+		spe1.setSpecialityKeycode(2);
 		spe1.setSpecialityName("ELECTRÓNICA");
 		
-		Speciality spe2 = new Speciality();
-		spe2.setSpecialityKeycode(3);
+		Specialty spe2 = new Specialty();
+		spe2.setSpecialityKeycode(4);
 		spe2.setSpecialityName("LABORATORISTA QUÍMICO");
 		
 		Teacher teacher = new Teacher();

@@ -9,7 +9,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="health") 
-
 public class Health {
 	
 	private int idHealth;
