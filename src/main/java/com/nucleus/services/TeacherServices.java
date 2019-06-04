@@ -90,7 +90,6 @@ public class TeacherServices {
 	@Consumes(MediaType.TEXT_PLAIN)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Teacher retrieveTeacherByName(@PathParam("rfc") String rfc, @PathParam("token") String token) {
-		System.out.println("entro");
 		if(jwt.parseJWT(token)) {
 			TeacherDAO teacherDAO = new TeacherDAO();
 			return teacherDAO.getTeacherByName(rfc);
