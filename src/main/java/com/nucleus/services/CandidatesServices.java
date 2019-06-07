@@ -32,20 +32,27 @@ public class CandidatesServices {
 	}
 	
 	@GET
-	@Path("/candidatesSelection")
+	@Path("/candidatesSelection/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public CandidatesSelection retrieveCandiatesSelection() {
-		CandidateSelectionDAO candidateSelection = new CandidateSelectionDAO();
-		
-		return candidateSelection.getCandidatesSelected();
+	public CandidatesSelection retrieveCandiatesSelection(@PathParam("token") String token) {
+		JavaJSONWebTokens jwt = new JavaJSONWebTokens();
+		if(jwt.parseJWT(token)) {
+			CandidateSelectionDAO candidateSelection = new CandidateSelectionDAO();
+			return candidateSelection.getCandidatesSelected();
+		}
+		return null;
 	}
 	
 	@POST
-	@Path("/updateCandidateSelection")
+	@Path("/updateCandidateSelection/{token}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response updateCandidateSelection(CandidatesSelection candidates) {
-		CandidateSelectionDAO candidateSelectionDAO = new CandidateSelectionDAO();
-		return candidateSelectionDAO.updateCandidateSelection(candidates);
+	public Response updateCandidateSelection(CandidatesSelection candidates, @PathParam("token") String token) {
+		JavaJSONWebTokens jwt = new JavaJSONWebTokens();
+		if(jwt.parseJWT(token)) {
+			CandidateSelectionDAO candidateSelectionDAO = new CandidateSelectionDAO();
+			return candidateSelectionDAO.updateCandidateSelection(candidates);
+		}
+		return Response.notModified().build();
 	}
 	
 	@POST
