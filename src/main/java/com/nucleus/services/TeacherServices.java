@@ -19,6 +19,7 @@ import com.nucleus.dao.TeacherDAO;
 import com.nucleus.dao.TeacherReportDAO;
 import com.nucleus.models.Teacher;
 import com.nucleus.requestModels.ScoresStudents;
+import com.nucleus.requestModels.TeacherChangePassword;
 import com.nucleus.requestModels.TeacherDataReport;
 import com.nucleus.requestModels.TeacherReport;
 import com.nucleus.models.Group;
@@ -45,6 +46,14 @@ public class TeacherServices {
 		}
 
 		return "false";
+	}
+	
+	@PUT
+	@Path("/updatePassword")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public boolean changePassword(TeacherChangePassword teacher) {
+		TeacherDAO teacherDAO = new TeacherDAO();
+		return teacherDAO.changePassword(teacher);
 	}
 	
 	@POST

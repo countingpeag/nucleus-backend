@@ -17,6 +17,7 @@ import com.nucleus.interfaces.DataAccessObjectInterface;
 import com.nucleus.interfaces.LoginInterface;
 import com.nucleus.models.Subject;
 import com.nucleus.models.Teacher;
+import com.nucleus.requestModels.TeacherChangePassword;
 
 public class TeacherDAO implements DataAccessObjectInterface<Teacher>,LoginInterface<Teacher> {
 	SessionFactory sf;
@@ -124,6 +125,42 @@ public class TeacherDAO implements DataAccessObjectInterface<Teacher>,LoginInter
 		}
 	}
 
+	public boolean changePassword(TeacherChangePassword teacher) {
+		
+		Transaction transaction = null; 
+		Teacher teacherToChange = null;
+		
+		try {
+			session = HibernateUtil.getSessionFactory().openSession();
+			transaction = session.beginTransaction();
+			
+			CriteriaBuilder builder = session.getCriteriaBuilder();
+			CriteriaQuery<Teacher> query = builder.createQuery(Teacher.class);
+			Root<Teacher> root = query.from(Teacher.class);
+			
+			query.select(root).where(builder.equal(root.get("idTeacher"), teacher.getTeacherId()), builder.equal(root.get("teacherPassword"), teacher.getOldTeacherPassword()));
+			Query<Teacher> q = session.createQuery(query);
+			
+			teacherToChange = q.getSingleResult();
+			
+			if(teacherToChange!=null) {
+				teacherToChange.setTeacherPassword(teacher.getNewTeacherPassword());
+				session.saveOrUpdate(teacherToChange);
+			}
+			else {
+				return false;
+			}
+			
+			transaction.commit();
+			
+			return true;
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
 	public Teacher getLogin(Teacher obj) {
 		session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
