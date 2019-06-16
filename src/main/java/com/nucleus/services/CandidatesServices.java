@@ -65,7 +65,7 @@ public class CandidatesServices {
 		if(res == true)
 			return Response.ok().entity("successful").build();
 		else 
-			return Response.status(500).entity("fail").build();
+			return Response.status(202).entity("fail").build();
 		
 	}
 }

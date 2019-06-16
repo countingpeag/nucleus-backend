@@ -52,7 +52,7 @@ public class Candidate {
     private Date candidateEndDate;
     private String candidateShift;
     private int candidateScore;
-    private Date candidateLastupdate;
+    private Date candidateCreationDate;
     
 	private Health health; 
 	private Preference preference;
@@ -93,7 +93,7 @@ public class Candidate {
 		this.candidateLastNameMother = candidateLastNameMother;
 	}
 	
-	@Column(name="candidate_birthdate")
+	@Column(name="candidate_birthday")
 	public Date getCandidateBirthDate() {
 		return candidateBirthDate;
 	}
@@ -351,17 +351,17 @@ public class Candidate {
 		this.candidateScore = candidateScore;
 	}
 	
-	@Column( name="candidate_lastupdate" )
-	public Date getCandidateLastupdate() {
-		return candidateLastupdate;
+	@Column( name="candidate_creation_date" )
+	public Date getCandidateCreationDate() {
+		return candidateCreationDate;
 	}
 
-	public void setCandidateLastupdate(Date candidateLastupdate) {
-		this.candidateLastupdate = candidateLastupdate;
+	public void setCandidateCreationDate(Date candidateCreationDate) {
+		this.candidateCreationDate = candidateCreationDate;
 	}
 
 	@OneToOne (cascade = CascadeType.ALL)
-	@JoinColumn(name="id_health") //esta columna se va a unir con otra tabla 
+	@JoinColumn(name="id_health")
 	public Health getHealth() {
 		return health;
 	}
