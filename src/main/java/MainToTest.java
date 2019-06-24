@@ -87,8 +87,8 @@ public class MainToTest {
 		teacher.setTeacherName("Erick Omar");
 		teacher.setTeacherLastNameFather("Palma");
 		teacher.setTeacherLastNameMother("Nuñez");
-		teacher.setTeacherUsername("test");
-		teacher.setTeacherPassword("test");
+		teacher.setTeacherUsername("teacher");
+		teacher.setTeacherPassword("teacher");
 		teacher.setTeacherGenre('H');
 		teacher.setTeacherRFC("PANEXXXXXXXX");
 		teacher.setIdInstitute(inst);
