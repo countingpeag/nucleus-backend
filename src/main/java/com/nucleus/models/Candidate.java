@@ -52,6 +52,7 @@ public class Candidate {
     private Date candidateEndDate;
     private String candidateShift;
     private int candidateScore;
+    private String candidateGroup;
     private Date candidateCreationDate;
     
 	private Health health; 
@@ -351,6 +352,15 @@ public class Candidate {
 		this.candidateScore = candidateScore;
 	}
 	
+	@Column( name="candidate_group" )
+	public String getCandidateGroup() {
+		return candidateGroup;
+	}
+
+	public void setCandidateGroup(String candidateGroup) {
+		this.candidateGroup = candidateGroup;
+	}
+
 	@Column( name="candidate_creation_date" )
 	public Date getCandidateCreationDate() {
 		return candidateCreationDate;
