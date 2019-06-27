@@ -1,13 +1,24 @@
 package com.nucleus.dao;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.xml.bind.DatatypeConverter;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.nucleus.hibernate.HibernateUtil;
 import com.nucleus.interfaces.DataAccessObjectInterface;
+import com.nucleus.models.Candidate;
 import com.nucleus.models.News;
 
 public class NewsDAO implements DataAccessObjectInterface<News> {
@@ -15,6 +26,7 @@ public class NewsDAO implements DataAccessObjectInterface<News> {
 	Session session;	
 	boolean response=false;
 	String query;
+	Transaction transaction;
 
 	@SuppressWarnings("finally")
 	public boolean create(News obj) {
@@ -122,6 +134,34 @@ public class NewsDAO implements DataAccessObjectInterface<News> {
 			return nwList;
 		}
 		
+	}
+	
+	public List<News> readAllLimitTen() {
+		transaction = null;
+		session = HibernateUtil.getSessionFactory().openSession();
+		List<News> news = new ArrayList<News>();
+	      try {
+	         transaction = session.beginTransaction();
+
+	         CriteriaBuilder builder = session.getCriteriaBuilder();
+	         CriteriaQuery<News> query = builder.createQuery(News.class);
+	         Root<News> root = query.from(News.class);
+	         query.orderBy(builder.desc(root.get("date")));
+	         
+	         Query<News> q=session.createQuery(query);
+	         q.setFirstResult(0);
+	         q.setMaxResults(10);
+	         news = q.getResultList();
+	         
+	         transaction.commit();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	         if (transaction != null) {
+	            transaction.rollback();
+	         }
+	      }
+	    
+	   return news;
 	}
 
 }

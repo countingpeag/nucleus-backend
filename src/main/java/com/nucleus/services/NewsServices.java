@@ -51,14 +51,14 @@ public class NewsServices {
 	@GET
 	@Path("/getAllNews/{token}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public ArrayList<News> getNewsAll(@PathParam("token") String token){
+	public List<News> getNewsAll(@PathParam("token") String token){
 		
-		ArrayList<News> listNews = null;
+		List<News> listNews = null;
 		JavaJSONWebTokens jwt = new JavaJSONWebTokens();
 		NewsDAO newsDAO = new NewsDAO();
 		
 		if(jwt.parseJWT(token)) {
-			listNews = newsDAO.readAll();
+			listNews = newsDAO.readAllLimitTen();
 		}
 		
 		return listNews;
@@ -73,7 +73,7 @@ public class NewsServices {
 		JavaJSONWebTokens jwt = new JavaJSONWebTokens();
 		NewsDAO newsDAO = new NewsDAO();
 		if(jwt.parseJWT(token)) {
-			if(newsDAO.update(news) ) {
+			if(newsDAO.update(news)) {
 				return true;
 			}
 			return false;

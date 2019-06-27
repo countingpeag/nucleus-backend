@@ -13,7 +13,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.nucleus.dao.AdministratorDAO;
-import com.nucleus.dao.CandidateSelectionDAO;
 import com.nucleus.dao.GroupDAO;
 import com.nucleus.dao.ScoreDAO;
 import com.nucleus.dao.SpecialityDAO;
@@ -26,7 +25,6 @@ import com.nucleus.models.Student;
 import com.nucleus.models.Subject;
 import com.nucleus.models.ValidationForm;
 import com.nucleus.requestModels.AdminRequestModel;
-import com.nucleus.requestModels.CandidatesSelection;
 import com.nucleus.requestModels.DataStatistics;
 import com.nucleus.requestModels.ScoreRequestModel;
 import com.nucleus.requestModels.StudentRequestModel;
